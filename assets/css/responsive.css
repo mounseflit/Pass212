@@ -1,0 +1,682 @@
+@media only screen and (max-width:1920px) {
+	.shep-right, .shep-left {
+		width: 350px;
+		opacity: 0.3;
+	}
+	
+}
+
+@media only screen and (min-width:991px) {
+	.exibition-area .calendarevent {
+		padding: 0px 0px 0px 0px;
+	}		
+}	
+
+@media only screen and (max-width:1366px) {
+	.shep-right, .shep-left {
+		width: 250px;
+		opacity: 0.3;
+	}
+}
+
+@media only screen and (max-width:1199px) {
+	.main-header .navbar-light .navbar-nav .nav-link {
+		margin-left: 20px;
+	}
+	.about-col img {
+		margin-bottom: 0;
+	}
+	.about-area {
+		padding: 150px 0 120px;
+	}
+	.about-col {
+		margin-bottom: 30px;
+	}
+	.venue-details {
+		padding: 20px 20px;
+	}
+	.info-box {
+		padding: 40px 20px;
+	}
+}
+
+@media only screen and (max-width:991px) {
+	.center991 {
+		text-align: center !important;
+		float: none !important;
+	}
+	.main-header .navbar-collapse {
+		background: #EFF7FE;
+		margin-top: 10px;
+	}
+	.main-header .navbar-light .navbar-nav .nav-link {
+		color: #333333;
+		padding: 6px 0;
+		margin-left: 15px;
+		margin-right: 15px;
+		text-align: left;
+	}
+	.main-header .navbar-light .navbar-toggler {
+		color: #dddddd;
+    	border-color: #dddddd;
+    	border-radius: 0;
+    	background: rgba(255,255,255,0.5);
+	}
+	.shep-right, .shep-left {
+	    width: 250px;
+	}
+	.about-area, .venue-area, .counter-area, .blog-area, .sponsor-area, .contact-area {
+	    padding: 100px 0 70px;
+	}
+	.organizer-area, .ticket-area, .schedule-area {
+		padding: 100px 0;
+	}
+	.speakers-area {
+		padding: 100px 0 90px;
+	}
+	.footer-area {
+		padding: 40px 0 23px;
+	}
+	.hero-col h2 {
+		font-size: 30px;
+	}
+	
+	.footer-col ul li {
+		margin: 0 5px;
+	}
+	.pricingTable .pricingTable-header:before {
+		-webkit-transform: rotate(-39deg);
+	    -ms-transform: rotate(-39deg);
+	    -o-transform: rotate(-39deg);
+	    transform: rotate(-39deg);
+	}
+	.pricing-table {
+		padding: 100px 0 70px;
+	}
+	.gallery-area {
+		padding: 100px 0;
+	}
+	.exibition-area .fc-view-harness
+	{
+		margin: 3px 3px;
+	}
+
+	.exibition-area .colcalendar
+	{
+		padding: 10px 16px;
+	}
+
+}
+
+/******Fixed second menu for edition******/
+/****************************************/
+@media only screen and (max-width:768px) {
+	.section-comites,.section-stars,.sponsor-area,.section-programme,.section-assister{
+		padding: 0px 0;
+	}
+	.contentCaptchaubs img 
+	{
+		width: 100%;
+		margin-left:0;
+	}
+
+	.box_etoile_cat2-content .row
+	{
+		margin: 0px 2px !important;
+	}
+	.mytable tr
+	{
+		background: none;
+		padding-top:17px;
+		border:none;
+	}
+
+	.section-morning .details
+	{
+		width: 100%;
+	}
+	
+	#souscSlider .carousel-control-prev,#souscSlider .carousel-control-next,
+	#souscSlider .carousel-control-prev-icon,#souscSlider .carousel-control-next-icon{
+        display: block;
+		width: 27px;
+    	height: 27px;
+     }
+	 #page_caption_membre .standard_wrapper .page_title_inner h1
+	 {
+		 font-size: 22px;
+	 }
+	 #page_caption_membre .standard_wrapper .directdiff a
+	 {
+		 font-size: 14px;
+	 }
+	 #page_caption_membre .standard_wrapper .page_title_inner .fonction
+	 {
+		 font-size: 14px;
+	 }
+
+	 #page_caption_membre .standard_wrapper
+	 {
+		 align-items: flex-start;
+	 }
+}
+/****************************************/
+/******Fixed second menu for edition******/
+
+
+@media only screen and (max-width:767px) {
+	.center767 {
+		text-align: center;
+		float: none;
+	}
+	.hero-col h2 {
+		font-size: 32px;
+		margin-bottom: 20px;
+	}
+	.hero-col h4 {
+		font-size: 20px;
+		margin-bottom: 20px;
+	}
+	.organizer-col h2 {
+		font-size: 40px;
+	}
+	.organizer-col h1 {
+		font-size: 48px;
+	}
+	.section-title h2 {
+		font-size: 36px;
+	}
+	.our-speaker:hover .social {
+	    top: 50%;
+	}
+	.my-select {
+		margin-bottom: 30px;
+	}
+	.ticket-area .btn {
+		margin-top: 0;
+	}
+	.table-responsive {
+		display: block;
+    	width: 100%;
+    	overflow-x: auto;
+	}
+	.venue-details ul li {
+		font-size: 16px;
+	}
+	.title-validate-vote
+	{
+		font-size: 23px;
+		padding-top: 12px;
+	}
+	.sous-title-validatevote
+	{
+		font-size: 20px;
+	}
+	
+
+
+
+}
+
+@media only screen and (max-width:600px) {
+	.full-wd600 {
+		width: 100%;
+	}
+	.hero-col {
+		padding: 20px 10px 30px;
+	}
+	.our-speaker:hover .social {
+	    top: 75%;
+	}
+	.our-speaker .team-content:before {
+		display: none;
+	}
+	.our-speaker .team-content {
+		text-align: center;
+	}
+	.our-speaker .social {
+		transform: translateY(-50%) rotate(0deg);
+	}
+	.pricingTable .pricingTable-header:before {
+		left: -35%;
+	}
+	
+}
+
+
+@media only screen and (max-width:575px) {
+	.hero-col:before, .hero-col:after {
+		display: none;
+	}
+	.hero-col {
+		padding: 0;
+	}
+	.countdown-container .countdown-value {
+		margin: 0 5px;
+		padding: 10px 10px;
+		font-size: 24px;
+	}
+	.shep-right, .shep-left {
+	    width: 200px;
+	}
+	.schedule-box {
+		padding-left: 0;
+		padding: 20px;
+	}
+	.schedule-box img {
+		position: relative;
+	}
+	.schedule-box h3 {
+		line-height: 25px;
+	}
+}
+
+
+@media only screen and (max-width:480px) {
+	.organizer-col h1 {
+	    font-size: 30px;
+	    margin-bottom: 20px;
+	}
+	.organizer-col h2 {
+	    font-size: 25px;
+	    margin-bottom: 25px;
+	}
+	.about-col h2 {
+		font-size: 30px;
+	}
+	.about-col .cd-headline {
+		font-size: 15px;
+	}
+	.section-title h2 {
+	    font-size: 24px;
+	}
+	.footer-col ul li a img {
+		width: 35px;
+	}
+	.comment-item {
+		margin-left: 0;
+		padding-left: 0;
+	}
+	.comment-item img {
+		position: relative;
+		margin-bottom: 20px;
+	}
+	
+}
+
+@media only screen and (max-width:420px) {
+	.countdown-container .countdown-value:before, 
+	.countdown-container .countdown-value:after {
+		display: none;
+	}
+	.countdown-container {
+		width: 50%;
+		float: left;
+		margin: 0;
+		margin-bottom: 10px;
+	}
+	.countdown-container .countdown-value {
+		margin: 0;
+		padding: 0;
+		font-size: 20px;
+		text-align: center;
+		margin: 0 auto;
+	}
+	.countdown-container .countdown-heading {
+		font-size: 20px;
+		width: 100%;
+		display: block;
+		text-align: center;
+		display: block !important;
+	}
+	.main-header .navbar-brand {
+	    width: 150px;
+	}
+	.our-speaker:hover .social {
+	    top: 60%;
+	}
+}
+
+@media only screen and (max-width:375px) {
+	.hero-col h2 {
+		font-size: 26px;
+	}
+	.hero-col h4 {
+		font-size: 16px;
+	}
+	.organizer-col h1 {
+	    font-size: 24px;
+	    margin-bottom: 20px;
+	}
+	.about-col h2 {
+	    font-size: 26px;
+	}
+	.footer-col ul li {
+	    margin: 0 2px;
+	}
+
+
+}
+
+
+@media only screen and (max-width:320px) {
+	
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------------------------------------- */
+/* ---------------------------------- Responsive Design 10-01-2020 ---------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------- */
+
+
+/** --------------------------------- Laptop --------------------------------- **/
+@media screen and (min-width: 767px) and (max-width: 1024px){
+	
+	/* ------------- Membres Photos Size ------------- */
+	.section-membres .single-membre .avatar{
+		height: 180px;
+	}
+	/* ------------- Membres Photos Size ------------- */
+
+	/* ------------- Ajouter du margin entre les 2 cercles CS et CE ------------- */
+	.section-comites .container .col-md-4{
+		margin: 0px 10px;
+	}
+
+	/* .imhome.page-title-section-2022 img.d-block
+	{
+		object-fit: fill;
+	} */
+	/* ------------- Ajouter du margin entre les 2 cercles CS et CE ------------- */
+}
+/** --------------------------------- Laptop --------------------------------- **/
+@media only screen and (max-width: 768px)
+{
+	.imhome.page-title-section-2022 img.d-block
+	{
+		object-fit: inherit;
+	}
+	.slidecontentimg
+	{
+		padding: 0;
+	}
+	#HomeSlider
+	{
+		padding: 0px 0px 10px 0px;
+	}
+	#HomeSlider .carousel-inner {
+		padding: 0;
+	}
+	.li2023-prog .colcalendar
+	{
+		order: 2;
+	}
+
+	.li2023-prog .colagenda
+	{
+		order: 1;
+	}
+	.exibition-area .calendarevent
+	{
+		padding: 0;
+	}
+	#HomeSlider .carousel-indicators li
+	{
+		top:4px;
+	}
+	 #HomeSlider .carousel-indicators
+	 {
+		 bottom: 3px;
+	 }
+	 .hero-col.herohome p {
+		font-size:18px;
+	}
+	#barFixCounter
+	{
+		padding: 14px 10px;
+		height: auto;
+	}
+
+	.counter-for-event .row 
+	{
+		margin-right:0;
+	}
+
+	.btn-counter-assis
+	{
+		margin:22px auto 2px;
+	}
+	#page_caption_membre .standard_wrapper .avatar
+	{
+		width: 70px;
+		height: 70px;
+	}
+}
+
+@media only screen and (max-width: 974px)
+{
+	.impcontentslide {
+		order: 2;
+	}
+	.slidecontentimg {
+		order: 1;
+	}
+}
+
+
+@media only screen and (max-width: 992px)
+{
+	.imhome.page-title-section-2022 img.d-block
+	{
+		padding:0;
+	}
+}
+/** --------------------------------- Tablette --------------------------------- **/
+@media (min-width:425px) and (max-width:768px){
+
+	/* ------------- #LI2019 En Chiffres ------------- */
+	.li2019-chiffres .carousel-chiffres{
+		height: auto;
+		padding:20px;
+	}
+	.li2019-chiffres .li2019 .contenu{
+		width: 62%;
+	}
+	.li2019-chiffres .carousel-chiffres .chiffre
+	{
+		padding-bottom:30px;
+	}
+	.li2019-chiffres .carousel-chiffres .chiffre abbr{
+		font-size: 30px;
+		line-height: 40px;
+	}
+	.li2019-chiffres .carousel-chiffres .chiffre span{
+		font-size: 17px;
+		line-height: 22px;
+	}
+
+	
+	/* ------------- #LI2019 En Chiffres ------------- */
+
+	/* ------------- Membres Photos Size ------------- */
+	.section-membres .col-md-3{
+		flex: 0 0 33.33%;
+		max-width: 33.33%;
+	}
+	.section-membres .single-membre .avatar{
+		height: 159px;
+	}
+	/* ------------- Membres Photos Size ------------- */
+	
+	/* ------------- Ajouter du margin entre les 2 cercles CS et CE ------------- */
+	.section-comites .container .col-md-4{
+		margin: 0px 10px;
+	}
+	/* ------------- Ajouter du margin entre les 2 cercles CS et CE ------------- */
+
+	/* ------------- Musee - Margin container - padding ------------- */
+	.museeSec2 p{
+		padding-left: 0px;
+	}
+	/* ------------- Musee - Margin container -  ------------- */
+
+	.for-contact-ligne h3
+	{
+		line-height: 1.4;
+	}
+	
+
+
+}
+/** --------------------------------- Tablette --------------------------------- **/
+
+
+
+/** --------------------------------- Mobile --------------------------------- **/
+@media only screen and (max-width:425px) {
+	
+	/* ------------- Compte a rebours ------------- */
+	#barFixCounter{
+		height: auto;
+	}
+	#barFixCounter #countdownPanel > div span{
+		font-size: 30px;
+		width: 30px;
+		height: 45px;
+		line-height: 45px;
+		display: flex;
+	}
+
+	#page_caption_membre .list-particip
+	{
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	
+/* 
+	#barFixCounter #countdownPanel > div span
+	{
+		font-size:15px;
+	}
+	#barFixCounter .hurryup span
+	{
+		font-size:13px;
+	} */
+	/* ------------- Compte a rebours ------------- */
+	
+	/* ------------- #LI2019 En Chiffres ------------- */
+	.li2019-chiffres .li2019 .contenu h2{
+		font-size: 26px;
+	}
+	.li2019-chiffres .carousel-chiffres{
+		height: auto;
+		padding-top: 16px;
+	}
+	.li2019-chiffres .carousel-chiffres .chiffre abbr{
+		font-size: 40px;
+		line-height: 40px;
+	}
+	/* ------------- #LI2019 En Chiffres ------------- */
+
+	/* ------------- Margin Left/Right Content page association ------------- */
+	.section-ass .content{
+		margin: 0px 20px;
+		}
+	/* ------------- Margin Left/Right Content page association ------------- */
+
+	/* ------------- Taille hauteur Logo de la page Partenaire ------------- */
+	.section-ass .logo-ass {
+		height: auto;
+	}
+	/* ------------- Taille hauteur Logo de la page Partenaire ------------- */
+
+	/* ------------- Margin Left/Right Content page comites ------------- */
+	.section-comites .row{
+		margin: 0px 20px;
+	}
+	/* ------------- Margin Left/Right Content page comites ------------- */
+
+	/* ------------- Programme de l'evenement - Taille de la police ------------- */
+	.head_days .day{
+		padding: 0px;
+		max-width: 17.28571428571429%;
+	}
+	.head_days .day span{
+		font-size: 16px;
+		line-height: 17px;
+	}
+	#execevtot .timeslot2{
+		font-size: 20px;
+		line-height: 1.3;
+	}
+	/* ------------- Programme de l'evenement - Taille de la police ------------- */
+	
+	/* ------------- Sponsors - Margin boutton - Taille de la police ------------- */
+	.section-sponsors .getTheFolder{
+		margin: 10px 0px;
+	}
+	.section-sponsors h3{
+		font-size: 20px;
+	}
+	/* ------------- Sponsors - Margin boutton - Taille de la police ------------- */
+	
+	/* ------------- Keynotes & Speed Keynotes ------------- */
+	.section-speakers .shedule-block .inner-box{
+		padding-left: 0px;
+		padding: 20px;
+	}
+	.section-speakers .circle{
+		display: none;
+	}
+
+
+	.bottomBanner .hurryup h5 {
+		font-size: 12px !important;
+	}
+
+	.bottomBanner .barFixCounterNotif
+	{
+		padding:9px 8px !important;
+	}
+	/* ------------- Keynotes & Speed Keynotes ------------- */
+
+	/* ------------- Musee - Margin container - padding ------------- */
+	.museeSec1{
+		margin: 0px 20px;
+	}
+	.museeSec2 p{
+		padding-left: 0px;
+	}
+	/* ------------- Musee - Margin container -  ------------- */
+
+	/* ------------- membre Detail - Margin Right/Left -  ------------- */
+	#page_caption_membre .standard_wrapper{
+		margin: 0;
+	}
+	/* ------------- Musee - Margin container -  ------------- */
+
+}
+/** --------------------------------- Mobile --------------------------------- **/
+.section-afterworks .contenu strong a 
+{
+	word-wrap: break-word;
+}
+
+@media only screen and (max-width:1440px) {
+	.hero-col.herohome p
+	{
+		font-size: 19px;
+		line-height: 37px
+	}
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+/* ---------------------------------- Responsive Design 10-01-2020 ---------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------- */
+
+
+
+

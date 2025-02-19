@@ -1,0 +1,21 @@
+body.lang_ar .exibition-area .area img{
+    position: absolute;
+}
+body.lang_ar .about-col .cd-headline{
+    float: right;
+}
+body.lang_ar .li2019-chiffres .li2019 .contenu {
+    left: initial;
+    right: 50%;
+    transform: translateX(50%);
+}
+body.lang_ar .li2019-chiffres .li2019 .contenu h2{
+    text-align: right;
+}
+body.lang_ar .navbar-nav > li > ul:before{
+    left: inherit;
+    right: 6px;
+}
+body.lang_ar .box_etoile_cat{
+    text-align: right;
+}
