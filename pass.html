@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pass 212</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f5f5f5 !important;
+}
+
+div.qr-card {
+  width: 380px;
+  margin: 30px auto;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.75);
+  border-radius: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.75);
+}
+div.qr-card .form {
+  background: #ff6a6a;
+  width: 100%;
+  padding: 20px 30px;
+  border-radius: 25px 25px 0 0;
+  display: flex;
+}
+div.qr-card .form input {
+  flex: 9;
+  padding: 10px 20px;
+  font-size: 18px;
+  margin-right: 5px;
+}
+div.qr-card .form i {
+  flex: 1;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
+div.qr-card #qrcode {
+  width: 300px;
+  height: 300px;
+  margin: 30px auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+    </style>
+
+
+<link rel="stylesheet" href="assets/css/main.css">
+
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+
+    <header class="header">
+
+        <button id="back-button" style="background: #00f552;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M19 12l-7 7-1.41-1.41L16.17 13H4v-2h12.17l-4.58-4.59L12 5l7 7z" />
+          </svg>
+        </button><br> <br> <br>
+        <a class="header--logo" href="index.html">
+          <img src="assets/img/logo.png" height="auto" width="80px">
+        </a>
+
+      </header>
+
+
+<!-- partial:index.partial.html -->
+
+<br><br><br><br>
+<div class="qr-card">
+<div class="form">
+    <input hidden class="url-text" id="url-text" type="text" placeholder="input url">
+    <i class="fas fa-sign-in-alt" style="margin-right: auto; right: 0;"></i>
+    <img src="assets/img/logo.png" alt="Logo" style="width: auto; height: 60px; margin-right: 10px; margin-left: auto;">
+    
+</div>
+<div id="qrcode"></div>
+
+<div style="text-align: center; margin-top: -20px;">
+    <h2 style="font-size: 24px; color: #333;">Credits: <span style="font-size: 26px; color: #666;">756 Mad</span></h2>
+   
+</div>
+</div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js'></script><script  src="./script.js"></script>
+
+<script>
+
+document.getElementById("back-button").addEventListener("click", () => {
+      window.location.href='../index.html';
+    });
+
+
+
+    let qrcode = new QRCode("qrcode");
+
+let inputURL = 
+document.getElementById("url-text");
+inputURL.value = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+
+let makeQRCode = function(){
+
+if (!inputURL.value) {
+ alert("QRCode can not be generated for empty string");
+ inputURL.focus();
+ return;
+}
+
+qrcode.makeCode(inputURL.value);
+};
+
+makeQRCode();
+
+inputURL.addEventListener('keypress', function(e){
+if (e.keyCode == 13) {
+   makeQRCode();
+ }
+});
+
+const ent = document.querySelector('.fas');
+ent.addEventListener('click',makeQRCode );
+</script>
+
+</html>

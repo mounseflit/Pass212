@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   
+  <meta charset="UTF-8">
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pass 212 - ValueVue</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="Mounseflit">
+  <link rel="shortcut icon" type="x-icon" href="logoclean.png">
+
+
+  <style>
+    #toggle-button {
+      background-color: rgba(0, 0, 0, 0);
+      margin-left: 10px;
+      margin-top: 7px;
+    }
+
+
+
+    /* Responsive styles */
+    @media (max-width: 600px) {
+
+
+      button {
+        padding: 8px;
+      }
+
+
+      #toggle-button {
+        background-color: rgba(0, 0, 0, 0);
+        margin-left: 10px;
+        margin-top: 0px;
+      }
+
+      .loader {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #412d0a;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 2s linear infinite;
+        position: relative;
+        top: 50%;
+        left: 45%;
+        display: none;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+
+    #back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    transform: rotate(180deg); 
+    text-decoration: solid;
+    background-color: rgb(85, 46, 14);
+    color: white;
+    border: none;
+    border-radius: 60%;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform 0.3s, padding 0.3s; /* Added transition effect */
+}
+
+#back-button:hover {
+    transform: rotate(180deg) scale(1.3); /* Apply rotation and scale on hover */
+}
+
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      /* Light gray background */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background:
+        linear-gradient(rgba(134, 134, 134, 0.884),
+          rgba(255, 255, 255, 0.5)),
+        url("3.png");
+      background-size: cover;
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+
+
+    .container {
+      max-width: 600px;
+      padding: 20px;
+      background-color: rgba(230, 230, 230, 0.507);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      font-size: larger;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-weight: bolder;
+    }
+
+
+    h2 {
+      color: rgba(255, 255, 255, 0.767);
+      text-align: center;
+      font-family: Arial, sans-serif;
+      text-shadow: 0 0px 50px rgba(90, 59, 0, 0.767);
+      margin-bottom: 10px;
+    }
+
+
+
+
+    h1 {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: #000000;
+      text-shadow: 0 0px 50px rgba(90, 54, 0, 0.767);
+      margin-bottom: 20px;
+    }
+
+    label {
+      color: #333;
+      /* Dark gray text */
+    }
+
+    input[type="text"] {
+      width: calc(100% - 10px);
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      /* Light gray border */
+      border-radius: 5px;
+    }
+
+    input[type="file"] {
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    button {
+      background-color: #634728; 
+      /* Green */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #4e3315;
+      /* Darker green on hover */
+    }
+
+    #resultContainer {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      /* Lighter gray background */
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Styling for the result elements */
+    .resultBox {
+      border: 2px solid #333;
+      /* Dark gray border */
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    .titleBox {
+      background-color: #000000;
+      color: #ffffff !important;
+      text-align: center;
+    }
+
+    .priceBox {
+      background-color: #87ceeb;
+      /* Sky blue */
+      text-align: center;
+    }
+
+    .priceRangemin {
+      background-color: #61f361;
+      /* Pale green */
+    }
+
+    .priceRangemax {
+      background-color: #e44c47;
+      /* Pale green */
+    }
+
+    .reasonBox {
+      background-color: #eff30f;
+      /* Light pink */
+    }
+
+    .strategyBox {
+      background-color: #dda0dd;
+      /* Plum */
+    }
+
+    .over {
+      background-color: #ff6347;
+      /* Tomato */
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .great {
+      background-color: #32cd32;
+      /* Lime green */
+      color: #ffffff;
+      text-align: center;
+    }
+
+
+    .priceBox {
+      text-align: center;
+      background-color: #87ceeb;
+      /* Sky blue */
+    }
+
+    .priceRangeBox {
+      text-align: center;
+      border-color: #ffffff00;
+      background-color: #ffffff00;
+      /* Pale green */
+    }
+
+
+    /* Styling for the arrows */
+    .arrow {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    .arrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: #333;
+      /* Dark gray */
+      transform: rotate(45deg);
+    }
+
+    /* Styling for price range min and max */
+    .priceRangeMin,
+    .priceRangeMax {
+      display: inline-block;
+      background-color: #61f361;
+      /* Pale green */
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-right: 5px;
+    }
+
+    .priceRangeMax {
+      background-color: #e44c47;
+      /* Pale green */
+    }
+
+
+    .introo h1 {
+
+      font-size: 68px;
+      font-weight: 900;
+      line-height: 1;
+      z-index: 1
+    }
+
+    
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #532f0d;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    position: relative;
+    margin-left: -15px;
+    top: 50%; 
+    left: 45%;
+    display: none;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+</style>
+</head>
+
+<body>
+  <!-- <header class="header">
+
+    <button id="back-button" style="background: #00f552;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path d="M19 12l-7 7-1.41-1.41L16.17 13H4v-2h12.17l-4.58-4.59L12 5l7 7z" />
+      </svg>
+    </button><br> <br> <br>
+    <a class="header--logo" href="index.html">
+      <img src="logoclean.png" height="auto" width="30px">
+      <p style="color:#000000">MonuMate</p>
+    </a>
+
+  </header> -->
+  <button id="back-button" style="background: #442305;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M19 12l-7 7-1.41-1.41L16.17 13H4v-2h12.17l-4.58-4.59L12 5l7 7z" />
+    </svg>
+  </button>
+  <div class="container">
+      <div class="introo">
+
+      <h1>Value<span style="color: rgb(218, 188, 132);text-shadow: 0 0px 50px rgba(80, 57, 8, 0.767);">Vue</span>
+      </h1>
+    </div>
+
+    <div class="camera-interface">
+      <video id="video" width="100%" height="auto" autoplay></video>
+      <canvas id="canvas" style="display:none;"></canvas>
+      <input type="file" id="fileInput" accept="image/*" style="display:none;">
+      <div class="button-container">
+        <button id="switchCameraButton">Switch Camera</button>
+        <button id="captureButton">Capture Photo</button>
+        <button id="retryButton" style="display:none;">Try Again</button>
+      </div>
+    </div>
+
+    
+     <div id="form" style="display: none;">
+        <label for="promptInput">Price Given:</label>
+        <input type="text" id="promptInput">
+        <label for="currency">Currency:</label>
+        <input type="text" id="currency">
+        <button id="submitButton">Submit</button>
+    <br></div>
+
+    <div class="loader" id="loader" style="display: none; margin-top: 100px;"></div>
+    
+        <div id="resultContainer" style="color: #000000; display: none; margin-top: 150px;"></div>
+    <br>
+    <div style="text-align: center;">
+      <button id="retryButton2" style="display:none;">Try Again</button>
+    </div>
+  </div>
+</body>
+
+<script type="importmap">
+  {
+    "imports": {
+      "@google/generative-ai": "https://esm.run/@google/generative-ai"
+    }
+  }
+</script>
+
+
+<script>
+  let currentStream;
+  let isFrontCamera = true;
+
+  // Access the camera and stream the video to the video element
+
+
+  async function startCamera() {
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    canvas.style.display = 'none';
+
+    if (currentStream) {
+      currentStream.getTracks().forEach(track => track.stop());
+    }
+
+    const constraints = {
+      video: {
+        facingMode: isFrontCamera ? 'user' : 'environment'
+      }
+    };
+
+    currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+    video.srcObject = currentStream;
+  }
+
+  document.getElementById('switchCameraButton').addEventListener('click', () => {
+    isFrontCamera = !isFrontCamera;
+    startCamera();
+  });
+  
+
+  // Capture the photo and drop it into the file input
+  function capturePhoto() {
+
+
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    const form = document.getElementById('form');
+    form.style.display = 'block';
+
+    // Set canvas dimensions to match video dimensions
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    // Draw the current video frame onto the canvas
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    // Convert the canvas image to a data URL
+    canvas.toBlob((blob) => {
+      const fileInput = document.getElementById('fileInput');
+      const file = new File([blob], 'captured_image.png', { type: 'image/png' });
+
+      // Create a DataTransfer to simulate a file drop
+      const dataTransfer = new DataTransfer();
+      dataTransfer.items.add(file);
+      fileInput.files = dataTransfer.files;
+
+      // Trigger any change event listeners on the file input
+      const event = new Event('change');
+      fileInput.dispatchEvent(event);
+    }, 'image/png');
+
+    // Freeze the video by pausing it
+    video.pause();
+    document.getElementById('captureButton').style.display = 'none';
+    document.getElementById('retryButton').style.display = 'inline-block';
+  }
+
+  // Retry capturing the photo
+  function retryCapture() {
+    const res= document.getElementById('resultContainer');
+    const vid = document.getElementById('video');
+    const retry= document.getElementById('retryButton2');
+
+    retry.style.display = 'none';
+    vid.style.display = 'block';
+
+    res.style.display = 'none';
+    const video = document.getElementById('video');
+    video.play();
+    document.getElementById('captureButton').style.display = 'inline-block';
+    document.getElementById('retryButton').style.display = 'none';
+  }
+
+  
+
+  // Start the camera when the page loads
+  window.addEventListener('load', startCamera);
+
+  // Add event listener to the capture button
+  document.getElementById('captureButton').addEventListener('click', async () => {
+    const form = document.getElementById('form');
+    capturePhoto();
+    form.style.display = 'block';
+  });
+
+  // Add event listener to the retry button
+  document.getElementById('retryButton').addEventListener('click', retryCapture);
+  document.getElementById('retryButton2').addEventListener('click', retryCapture);
+</script>
+
+
+<script type="module">
+  // script.js
+
+
+  // Define a function to parse and display the JSON data
+  function displayData(data) {
+
+
+    // Parse the JSON data
+    data = data.replace(/```json|```/g, '');
+    data = data.replace(/```/g, '');
+    data = JSON.parse(data);
+
+
+
+
+    const resultContainer = document.querySelector("#resultContainer");
+    resultContainer.style.display = 'block';
+    const loader = document.getElementById("loader");
+    // Create elements for each piece of information
+    const title = document.createElement("div");
+    title.textContent = data.product_name;
+    title.classList.add("resultBox", "titleBox");
+    resultContainer.appendChild(title);
+
+    const price = document.createElement("div");
+    price.textContent = `Shop Price: ${data.shop_price} ${data.currency}`;
+    price.classList.add("resultBox", "priceBox");
+    resultContainer.appendChild(price);
+    const priceRange = document.createElement("div");
+    priceRange.classList.add("resultBox", "priceRangeBox");
+    const minPrice = document.createElement("span");
+    minPrice.textContent = `${data.reasonable_price_range.min} ${data.currency}`;
+    minPrice.classList.add("priceRangeMin");
+    priceRange.appendChild(minPrice);
+    const separator = document.createElement("span");
+    separator.textContent = " - ";
+    priceRange.appendChild(separator);
+    const maxPrice = document.createElement("span");
+    maxPrice.textContent = `${data.reasonable_price_range.max} ${data.currency}`;
+    maxPrice.classList.add("priceRangeMax");
+    priceRange.appendChild(maxPrice);
+    resultContainer.appendChild(priceRange);
+
+    if (data.is_over_priced) {
+      const over = document.createElement("div");
+      over.textContent = "Over Priced";
+      over.classList.add("resultBox", "over");
+      resultContainer.appendChild(over);
+      const reason = document.createElement("div");
+      reason.textContent = data.reason;
+      reason.classList.add("resultBox", "reasonBox");
+      resultContainer.appendChild(reason);
+    }
+
+    if (data.is_great_deal) {
+      const great = document.createElement("div");
+      great.textContent = "Great Deal";
+      great.classList.add("resultBox", "great");
+      resultContainer.appendChild(great);
+      const reason = document.createElement("div");
+      reason.textContent = data.reason;
+      reason.classList.add("resultBox", "reasonBox");
+      resultContainer.appendChild(reason);
+    }
+
+    // Display the negotiation strategy
+    const strategyTitle = document.createElement("div");
+    strategyTitle.textContent = "Negotiation Strategy:";
+    strategyTitle.classList.add("resultBox", "strategyBox");
+    resultContainer.appendChild(strategyTitle);
+
+    const strategyList = document.createElement("ol");
+    for (const step in data.strategie) {
+      const listItem = document.createElement("li");
+      listItem.textContent = data.strategie[step];
+      listItem.classList.add("resultBox", "strategyBox");
+      strategyList.appendChild(listItem);
+
+    }
+    resultContainer.appendChild(strategyList);
+  }
+
+  function rot13Encrypt(inputString) {
+    var result = '';
+    for (var i = 0; i < inputString.length; i++) {
+      var charCode = inputString.charCodeAt(i);
+      if (65 <= charCode && charCode <= 90) {
+        result += String.fromCharCode(((charCode - 65 + 13) % 26) + 65);
+      } else if (97 <= charCode && charCode <= 122) {
+        result += String.fromCharCode(((charCode - 97 + 13) % 26) + 97);
+      } else {
+        result += inputString.charAt(i);
+      }
+    }
+    return result;
+  }
+
+  const API_KEY = rot13Encrypt("NVmnFlOh7czylr1cViWRwEPbPjS1P1r8-6xWWKf"); // Replace with your actual API key
+
+  // Import GoogleGenerativeAI library
+  import { GoogleGenerativeAI } from "@google/generative-ai";
+
+  // Access your API key (see "Set up your API key" above)
+  const genAI = new GoogleGenerativeAI(API_KEY);
+
+  // Converts a File object to a GoogleGenerativeAI.Part object.
+  async function fileToGenerativePart(file) {
+    const base64EncodedDataPromise = new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result.split(',')[1]);
+      reader.readAsDataURL(file);
+    });
+    return {
+      inlineData: { data: await base64EncodedDataPromise, mimeType: file.type },
+    };
+  }
+
+  // Function to run the AI model
+  async function run() {
+    // For text-and-images input (multimodal), use the gemini-pro-vision model
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const loader = document.getElementById("loader");
+    const resultContainer = document.querySelector("#resultContainer");
+    resultContainer.innerHTML = "";
+    loader.style.display = 'block';
+    const price = document.getElementById("promptInput").value;
+    const currency = document.getElementById("currency").value;
+
+
+    const prompt =
+      `You are an AI service named 'ValueVue' designed to assist patients 
+  and consumers in making informed purchasing decisions 
+  and to prevent tourists from falling victim to scams. 
+  Your task is to analyze images of products, 
+  provide a reasoned estimate of their market value in ${currency}, 
+  and offer a brief description. Additionally,
+  you'll compare the price provided by the seller/shop that is : ${price} ,
+  compare it with the price that you estimated in ${currency}.
+  You will determine if the buyer is potentially being scammed,
+  if the price is significantly higher than the market value ,
+  or if it's a fair deal. try to be the max as possible accurate and
+  realistic and give realistic prices DONT ALWAYS SAYS ITS OVER PRICED, say it if only the price looks over the market value, and generate an bargaining and negotiating strategie with 3 steps.
+  Provide the output in a JSON format structured as follows without any additional text and without quotes or saying "json" :
+  { "product_name": "xxxxxxxxx", "currency": "xxxx", "shop_price": "XXXX", "estimated_price": "XXXX", "reasonable_price_range": 
+  { "min": xxx, "max": xxx }, "is_over_priced": true/false, "is_great_deal": true/false, "reason": "XXXXXXXXXXXXXXXXXXXXXXXX", "strategie": 
+  { "step 1": "xxxxxxxx", "step 2": "xxxxxxxx", "step 3": "xxxxxxxx" }}`;
+
+    const fileInputEl = document.querySelector("#fileInput");
+    const imageParts = await Promise.all(
+      [...fileInputEl.files].map(fileToGenerativePart)
+    );
+
+    const result = await model.generateContent([prompt, ...imageParts]);
+    const response = await result.response;
+    loader.style.display = 'none';
+    const retry= document.getElementById('retryButton2');
+    retry.style.display = 'inline-block';
+    const text = response.text();
+    console.log(text);
+
+    // Display the parsed JSON data
+    displayData(text);
+
+
+  }
+
+  // Event listener for the submit button
+  const sub= document.querySelector("#submitButton");
+
+
+  sub.addEventListener("click", async () => {
+    const vid = document.getElementById('video');
+    const can = document.getElementById('canvas');
+
+    const form = document.getElementById('form');
+
+    form.style.display = 'none';
+
+    
+    const retry1= document.getElementById('retryButton');
+
+    retry1.style.display = 'none';
+
+    vid.style.display = 'none';
+    can.style.display = 'none';
+
+    await run();
+  });
+
+  
+  document.getElementById("back-button").addEventListener("click", () => {
+      window.location.href='../index.html';
+    });
+
+</script>
+
+
+</html>

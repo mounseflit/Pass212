@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   
+  <meta charset="UTF-8">
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pass 212</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="Mounseflit">
+  <link rel="shortcut icon" type="x-icon" href="logoclean.png">
+
+
+  <style>
+    #toggle-button {
+      background-color: rgba(0, 0, 0, 0);
+      margin-left: 10px;
+      margin-top: 7px;
+    }
+
+
+
+    /* Responsive styles */
+    @media (max-width: 600px) {
+
+
+      button {
+        padding: 8px;
+      }
+
+
+      #toggle-button {
+        background-color: rgba(0, 0, 0, 0);
+        margin-left: 10px;
+        margin-top: 0px;
+      }
+
+      .loader {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #20410a;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 2s linear infinite;
+        position: relative;
+        top: 50%;
+        left: 45%;
+        display: none;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+
+    #back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    transform: rotate(180deg); 
+    text-decoration: solid;
+    background-color: rgb(85, 14, 14);
+    color: white;
+    border: none;
+    border-radius: 60%;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform 0.3s, padding 0.3s; /* Added transition effect */
+}
+
+#back-button:hover {
+    transform: rotate(180deg) scale(1.3); /* Apply rotation and scale on hover */
+}
+
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      /* Light gray background */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background:
+        linear-gradient(rgba(134, 134, 134, 0.884),
+          rgba(255, 255, 255, 0.5)),
+        url("assets/images/2.png");
+      background-size: cover;
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+
+
+    .container {
+      max-width: 600px;
+      padding: 20px;
+      background-color: rgba(230, 230, 230, 0.507);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      font-size: larger;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-weight: bolder;
+    }
+
+
+    h2 {
+      color: rgba(255, 255, 255, 0.767);
+      text-align: center;
+      font-family: Arial, sans-serif;
+      text-shadow: 0 0px 50px rgba(3, 90, 0, 0.767);
+      margin-bottom: 10px;
+    }
+
+
+
+
+    h1 {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: #000000;
+      text-shadow: 0 0px 50px rgba(8, 90, 0, 0.767);
+      margin-bottom: 20px;
+    }
+
+    label {
+      color: #333;
+      /* Dark gray text */
+    }
+
+    input[type="text"] {
+      width: calc(100% - 10px);
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      /* Light gray border */
+      border-radius: 5px;
+    }
+
+    input[type="file"] {
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    button {
+      background-color: #326328; 
+      /* Green */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #154e18;
+      /* Darker green on hover */
+    }
+
+    #resultContainer {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      /* Lighter gray background */
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Styling for the result elements */
+    .resultBox {
+      border: 2px solid #333;
+      /* Dark gray border */
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    .titleBox {
+      background-color: #5cda67;
+      color: #000000 !important;
+      text-align: center;
+    }
+
+    .priceBox {
+      background-color: #67db67;
+      /* Sky blue */
+      text-align: center;
+    }
+
+    .priceRangemin {
+      background-color: #7ac25e;
+      /* Pale green */
+    }
+
+    .priceRangemax {
+      background-color: #47e447;
+      /* Pale green */
+    }
+
+    .reasonBox {
+      background-color: #57e752;
+      /* Light pink */
+    }
+
+    .strategyBox {
+      background-color: #a0dda5;
+      /* Plum */
+    }
+
+    .over {
+      background-color: #54d354;
+      /* Tomato */
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .great {
+      background-color: #76dd61;
+      /* Lime green */
+      color: #ffffff;
+      text-align: center;
+    }
+
+
+    .priceBox {
+      text-align: center;
+      background-color: #8aeb87;
+      /* Sky blue */
+    }
+
+    .priceRangeBox {
+      text-align: center;
+      border-color: #ffffff00;
+      background-color: #ffffff00;
+      /* Pale green */
+    }
+
+
+    /* Styling for the arrows */
+    .arrow {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    .arrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: #333;
+      /* Dark gray */
+      transform: rotate(45deg);
+    }
+
+    /* Styling for price range min and max */
+    .priceRangeMin,
+    .priceRangeMax {
+      display: inline-block;
+      background-color: #61f361;
+      /* Pale green */
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-right: 5px;
+    }
+
+    .priceRangeMax {
+      background-color: #e44c47;
+      /* Pale green */
+    }
+
+
+    .introo h1 {
+
+      font-size: 68px;
+      font-weight: 900;
+      line-height: 1;
+      z-index: 1
+    }
+
+    
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #19530d;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    position: relative;
+    margin-left: -15px;
+    top: 50%; 
+    left: 45%;
+    display: none;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+ 
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+</style>
+</head>
+
+<body>
+
+ 
+
+
+  <button id="back-button" style="background: #ff0000;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M19 12l-7 7-1.41-1.41L16.17 13H4v-2h12.17l-4.58-4.59L12 5l7 7z" />
+    </svg>
+  </button>
+
+
+  <div class="container">
+      
+      <div class="introo">
+
+      
+      <img src="assets/img/logo.png" alt="Logo" style="display: block; margin: 0 auto; width: 100px; height: auto;">
+
+    <div class="camera-interface">
+      <video id="video" width="100%" height="auto" autoplay></video>
+      <canvas id="canvas" style="display:none;"></canvas>
+      <input type="file" id="fileInput" accept="image/*" style="display:none;">
+      <div class="button-container">
+        <button id="switchCameraButton">Switch Camera</button>
+        <button id="captureButton">Capture Photo</button>
+        <button id="retryButton" style="display:none;">Try Again</button>
+      </div>
+    </div>
+
+    
+     <div id="form" style="display: none;">
+        <label for="promptInput">localisation:</label>
+        <input type="text" id="promptInput">
+    <div style="text-align: center; margin-bottom: 20px;">
+      <label for="lang" style="color: #333; font-weight: bold; margin-right: 10px;">Language:</label>
+      <select id="lang" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; background-color: #fff; color: #333; font-size: 16px;">
+      <option value="ar">Arabic</option>
+      <option value="en">English</option>
+      <option value="fr">French</option>
+      <option value="es">Spanish</option>
+      <option value="de">German</option>
+      <option value="it">Italian</option>
+      <option value="pt">Portuguese</option>
+      <option value="nl">Dutch</option>
+      <option value="ru">Russian</option>
+      <option value="ja">Japanese</option>
+      <option value="ko">Korean</option>
+      <option value="zh">Chinese</option>
+      <option value="hi">Hindi</option>
+      <option value="tr">Turkish</option>
+      </select>
+       </div><br>
+       <div style="text-align: center; margin-bottom: 20px;">
+     <button id="submitButton">Submit</button></div>
+   
+       
+    <br></div>
+
+    <div class="loader" id="loader" style="display: none; margin-top: 100px;"></div>
+    
+        <div id="resultContainer" style="color: #000000; display: none; margin-top: 150px;"></div>
+    <br>
+    <div style="text-align: center;">
+      <button id="retryButton2" style="display:none;">Try Again</button>
+    </div>
+  </div>
+
+  </div>
+
+</body>
+
+<script type="importmap">
+  {
+    "imports": {
+      "@google/generative-ai": "https://esm.run/@google/generative-ai"
+    }
+  }
+</script>
+
+
+<script>
+
+let currentStream;
+  let isFrontCamera = true;
+
+  // Access the camera and stream the video to the video element
+
+
+  async function startCamera() {
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    canvas.style.display = 'none';
+
+    if (currentStream) {
+      currentStream.getTracks().forEach(track => track.stop());
+    }
+
+    const constraints = {
+      video: {
+        facingMode: isFrontCamera ? 'user' : 'environment'
+      }
+    };
+
+    currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+    video.srcObject = currentStream;
+  }
+
+  document.getElementById('switchCameraButton').addEventListener('click', () => {
+    isFrontCamera = !isFrontCamera;
+    startCamera();
+  });
+  
+  document.getElementById("back-button").addEventListener("click", () => {
+      window.location.href='../index.html';
+    });
+
+
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          const promptInput = document.getElementById("promptInput");
+          fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
+            .then(response => response.json())
+            .then(data => {
+
+                
+              const city = data.address.city;
+            
+              promptInput.value = `${city}`;
+            })
+            .catch(error => {
+              console.error("Error retrieving city name: ", error);
+              alert("Unable to retrieve your city name. Please enter it manually.");
+            });
+        },
+        function (error) {
+          console.error("Error getting location: ", error);
+          alert("Unable to retrieve your location. Please enter it manually.");
+        }
+      );
+    } else {
+      alert("Unable to retrieve your location. Please enter it manually.");
+    }
+
+  // Capture the photo and drop it into the file input
+  function capturePhoto() {
+
+
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    const form = document.getElementById('form');
+    form.style.display = 'block';
+
+    // Set canvas dimensions to match video dimensions
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    // Draw the current video frame onto the canvas
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    // Convert the canvas image to a data URL
+    canvas.toBlob((blob) => {
+      const fileInput = document.getElementById('fileInput');
+      const file = new File([blob], 'captured_image.png', { type: 'image/png' });
+
+      // Create a DataTransfer to simulate a file drop
+      const dataTransfer = new DataTransfer();
+      dataTransfer.items.add(file);
+      fileInput.files = dataTransfer.files;
+
+      // Trigger any change event listeners on the file input
+      const event = new Event('change');
+      fileInput.dispatchEvent(event);
+    }, 'image/png');
+
+    // Freeze the video by pausing it
+    video.pause();
+    document.getElementById('captureButton').style.display = 'none';
+    document.getElementById('retryButton').style.display = 'inline-block';
+  }
+
+  // Retry capturing the photo
+  function retryCapture() {
+    const res= document.getElementById('resultContainer');
+    const vid = document.getElementById('video');
+    const retry= document.getElementById('retryButton2');
+
+    retry.style.display = 'none';
+    vid.style.display = 'block';
+
+    res.style.display = 'none';
+    const video = document.getElementById('video');
+    video.play();
+    document.getElementById('captureButton').style.display = 'inline-block';
+    document.getElementById('retryButton').style.display = 'none';
+  }
+
+  
+
+  // Start the camera when the page loads
+  window.addEventListener('load', startCamera);
+
+  // Add event listener to the capture button
+  document.getElementById('captureButton').addEventListener('click', async () => {
+    const form = document.getElementById('form');
+    capturePhoto();
+    form.style.display = 'block';
+  });
+
+  // Add event listener to the retry button
+  document.getElementById('retryButton').addEventListener('click', retryCapture);
+  document.getElementById('retryButton2').addEventListener('click', retryCapture);
+</script>
+
+
+<script type="module">
+  // script.js
+
+// Define a function to parse and display the JSON data
+function displayData(data) {
+
+
+// Parse the JSON data
+
+data = data.replace(/```json|```/g, '');
+data = data.replace(/```/g, '');
+data = JSON.parse(data);
+
+
+
+
+const resultContainer = document.querySelector("#resultContainer");
+resultContainer.style.display = 'none';
+
+// Clear previous results
+resultContainer.innerHTML = "";
+
+// Create and append elements for each piece of data
+const nameElement = document.createElement("div");
+nameElement.classList.add("resultBox", "titleBox");
+nameElement.textContent = `Name: ${data.name}`;
+resultContainer.appendChild(nameElement);
+
+const localisationElement = document.createElement("div");
+localisationElement.classList.add("resultBox", "priceBox");
+localisationElement.textContent = `Localisation: ${data.localisation}`;
+resultContainer.appendChild(localisationElement);
+
+const descriptionElement = document.createElement("div");
+descriptionElement.classList.add("resultBox", "reasonBox");
+descriptionElement.textContent = `Description: ${data.description}`;
+resultContainer.appendChild(descriptionElement);
+
+const historyElement = document.createElement("div");
+historyElement.classList.add("resultBox", "strategyBox");
+historyElement.textContent = `History: ${data.history}`;
+resultContainer.appendChild(historyElement);
+
+
+const chatButton = document.createElement("button");
+chatButton.textContent = "More informations ? Chat with Me !";
+chatButton.style.backgroundColor = "#634728";
+chatButton.style.color = "white";
+chatButton.style.padding = "10px 20px";
+chatButton.style.border = "none";
+chatButton.style.borderRadius = "5px";
+chatButton.style.cursor = "pointer";
+chatButton.style.fontSize = "25px";
+chatButton.style.transition = "background-color 0.3s";
+chatButton.style.display = "block";
+chatButton.style.margin = "20px auto";
+chatButton.addEventListener("mouseover", () => {
+  chatButton.style.backgroundColor = "#4e3315";
+});
+chatButton.addEventListener("mouseout", () => {
+  chatButton.style.backgroundColor = "#634728";
+});
+chatButton.addEventListener("click", () => {
+  window.location.href = `ai.html?name=${data.name}&localisation=${data.localisation}&description=${data.description}&history=${data.history}&lang=${document.getElementById("lang").value}`;
+});
+
+resultContainer.appendChild(chatButton);
+
+chatButton.click();
+
+}
+
+  
+  function rot13Encrypt(inputString) {
+    var result = '';
+    for (var i = 0; i < inputString.length; i++) {
+      var charCode = inputString.charCodeAt(i);
+      if (65 <= charCode && charCode <= 90) {
+        result += String.fromCharCode(((charCode - 65 + 13) % 26) + 65);
+      } else if (97 <= charCode && charCode <= 122) {
+        result += String.fromCharCode(((charCode - 97 + 13) % 26) + 97);
+      } else {
+        result += inputString.charAt(i);
+      }
+    }
+    return result;
+  }
+
+  const API_KEY = rot13Encrypt("NVmnFlOh7czylr1cViWRwEPbPjS1P1r8-6xWWKf"); // Replace with your actual API key
+
+  // Import GoogleGenerativeAI library
+  import { GoogleGenerativeAI } from "@google/generative-ai";
+
+  // Access your API key (see "Set up your API key" above)
+  const genAI = new GoogleGenerativeAI(API_KEY);
+
+  // Converts a File object to a GoogleGenerativeAI.Part object.
+  async function fileToGenerativePart(file) {
+    const base64EncodedDataPromise = new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result.split(',')[1]);
+      reader.readAsDataURL(file);
+    });
+    return {
+      inlineData: { data: await base64EncodedDataPromise, mimeType: file.type },
+    };
+  }
+
+  // Function to run the AI model
+  async function run() {
+    // For text-and-images input (multimodal), use the gemini-pro-vision model
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const loader = document.getElementById("loader");
+    const resultContainer = document.querySelector("#resultContainer");
+    resultContainer.innerHTML = "";
+    loader.style.display = 'block';
+    const local = document.getElementById("promptInput").value;
+
+
+    const prompt =
+      `ROLE : You are an AI service named 'Monumate' designed to identify the historical monuments 
+       TASK : Identify this monument and provide the name , the localisation, description of the monument in form of json like this :
+       {
+  "name": "xxxxx",
+  "localisation": "xxxx, xxxx",
+  "description": "xxxxxxxxxxxxxxxxxxxxxx",
+  "history": "xxxxxxxxxxxxxxxxxxxxxx"
+}
+    `;
+
+    const fileInputEl = document.querySelector("#fileInput");
+    const imageParts = await Promise.all(
+      [...fileInputEl.files].map(fileToGenerativePart)
+    );
+
+    const result = await model.generateContent([prompt, ...imageParts]);
+    const response = await result.response;
+    loader.style.display = 'none';
+    const retry= document.getElementById('retryButton2');
+    retry.style.display = 'inline-block';
+    const text = response.text();
+    console.log(text);
+
+ 
+    displayData(text);
+  }
+
+  // Event listener for the submit button
+  const sub= document.querySelector("#submitButton");
+
+
+  sub.addEventListener("click", async () => {
+    const vid = document.getElementById('video');
+    const can = document.getElementById('canvas');
+
+    const form = document.getElementById('form');
+
+    form.style.display = 'none';
+
+    
+    const retry1= document.getElementById('retryButton');
+
+    retry1.style.display = 'none';
+
+    vid.style.display = 'none';
+    can.style.display = 'none';
+
+    await run();
+  });
+
+  
+  document.getElementById("back-button").addEventListener("click", () => {
+      window.location.href='index.html';
+    });
+
+</script>
+
+
+</html>

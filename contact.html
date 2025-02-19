@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr" dir="">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <meta property="og:title" content="MonuMate" />
+    <meta property="og:image" content="../assets/img/logoclean.png" />
+    <meta property="og:description" content="MonuMate" />
+    <meta property="og:url" content="index.html" />
+    <title>MonuMate - The Ai Tourist Pal</title>
+
+    <meta name="keywords" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="mounseflit">
+    <link rel="icon" href="assets/img/logoclean.png">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome-animation.min.css" rel="stylesheet">
+    <link href="assets/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="assets/css/animate.min.css" rel="stylesheet">
+
+    <link href="assets/css/animated-text.css" rel="stylesheet">
+    <link href="assets/css/jquery.mb.YTPlayer.min.css" rel="stylesheet">
+    <link href="assets/css/zoomslider.css" rel="stylesheet">
+    <link href="assets/css/jarallax.css" rel="stylesheet">
+    <link href="assets/css/lightbox.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/aos.css" rel="stylesheet">
+
+
+
+    <link rel="stylesheet" href="https://cdn.imperium.plus/assets/css/fullcalendar/v4.4.2/main.min.css">
+
+
+
+    <link href="assets/css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/jquery-confirm.min.css">
+
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".fixed-top" class="lang_fr" style="background-color: #ffffff !important;">
+    <!-- Main Header start -->
+
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-light" style="background-color: #f5c8c8 !important;">
+            <div class="container">
+                <a class="navbar-brand" href="">
+                    <img class="logo-white" src="assets/img/logg.png" alt="" style="height: auto !important; width: 80px !important;">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="index.html">Home
+                               
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="Valuevue/index.html">ValueVue
+                              
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="tripplanner/index.html">TripPlanner
+                              
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="lib.html">Library
+                               
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="index.html#abt">About Us
+                              
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="contact.html">Contact
+                                
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+                </div>
+
+                <style>
+                    .navbar-nav .nav-link {
+                        position: relative;
+                        color: #492c19;
+                        transition: color 0.3s;
+                    }
+
+                    .navbar-nav .nav-link::after {
+                        content: '';
+                        position: absolute;
+                        width: 0;
+                        height: 2px;
+                        display: block;
+                        margin-top: 5px;
+                        right: 0;
+                        background: #ff7b7b;
+                        transition: width 0.3s ease;
+                        -webkit-transition: width 0.3s ease;
+                    }
+
+                    .navbar-nav .nav-link:hover {
+                        color: #583822;
+                    }
+
+                    .navbar-nav .nav-link:hover::after {
+                        width: 100%;
+                        left: 0;
+                        background: #eb8c8c;
+                    }
+                </style>
+            </div>
+        </nav>
+    </header>
+
+
+    <br><br><br>
+
+    <section id="contact" class="contact-section" style="background-color: #ffffff; padding: 50px 0;">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Contact Us</h2>
+                <p>We would love to hear from you!</p>
+            </div>
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="userEmail">Email address</label>
+                            <input type="email" class="form-control" id="userEmail" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Your message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="background-color: #194919; color: #f0e3b8;" id="submitBtn">Send</button>
+                    </form>
+                    <div id="formResponse" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Sending...';
+    
+            const userEmail = document.getElementById('userEmail').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+    
+            try {
+                const response = await fetch('https://mail-api-mounsef.vercel.app/api/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        to: 'litnitimounsef@gmail.com',
+                        cc: userEmail,
+                        subject: subject,
+                        message: message,
+                        isHtml: true
+                    })
+                });
+    
+                const result = await response.json();
+                if (response.ok) {
+                    document.getElementById('formResponse').innerHTML = `<div class="alert alert-success">${result.message}</div>`;
+                } else {
+                    document.getElementById('formResponse').innerHTML = `<div class="alert alert-danger">Error: ${result.message}</div>`;
+                }
+            } catch (error) {
+                document.getElementById('formResponse').innerHTML = `<div class="alert alert-danger">An error occurred. Please try again later.</div>`;
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Send';
+            }
+        });
+    </script>
+    
+
+    <section class="section-for-contact" >
+        <footer class="footer-area" style="background-image: url('assets/images/2.png'); background-size: cover; background-position: center; background-blend-mode: lighten; ">
+            <div class="container">
+                <div class="footer-logo">
+                    <img src="assets/img/dt.png"  style="height: auto; width: 500px;">
+                </div>
+            </div>
+
+        </footer>
+    </section>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+
+            // puisse slider avec le doigt
+            var startX, startY, endX, endY;
+
+            $('#homeCarousel').on('touchstart', function(e) {
+                var touch = e.originalEvent.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+            });
+
+            $('#homeCarousel').on('touchmove', function(e) {
+                e.preventDefault();
+
+                var touch = e.originalEvent.touches[0];
+                endX = touch.clientX;
+                endY = touch.clientY;
+            });
+
+            $('#homeCarousel').on('touchend', function() {
+                var deltaX = endX - startX;
+                var deltaY = endY - startY;
+
+                if (Math.abs(deltaX) > 15) {
+                    if (deltaX > 0) {
+                        $('#homeCarousel').carousel('prev');
+                    } else {
+                        $('#homeCarousel').carousel('next');
+                    }
+                }
+            });
+
+
+        });
+    </script>
+
+
+
+
+
+
+    <div class="copyright">
+        <p>©OpenData 2025 All Rights Reserved.</p>
+     
+    </div>
+
+ <!-- Plug-In Code Start -->
+ <link rel="stylesheet" href="https://bot-in.surge.sh/cdn/bot-in.css">
+ <div class="chatbot-bubble2024" id="chatbot-bubble2024"><img src="https://img.icons8.com/ios-filled/50/000000/chat.png" id="chat-icon2024" alt="Chatbot"></div><div id="chat-container2024" class="chat-container2024"><div id="chatbox2024" class="chatbox2024"></div><div class="message-bar2024"> <input class="message-input2024" id="messageInput2024" type="text" placeholder="Type your question here..." /><button class="send-button2024" type="button" id="sendButton2024">Ask</button></div></div>
+ <script src="https://bot-in.surge.sh/cdn/bot-in.js"></script>
+ <!-- Plug-In Code End -->
+
+
+
+    
+    <!-- modernizr -->
+    <script src="assets/js/modernizr-2.6.2.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://cdn.imperium.plus/assets/js/jquery/v3.1/jquery.min.js"></script>
+
+    <!-- popper.min
+    <script src="/assets/js/popper.min.js"></script> -->
+
+    <!-- Bootstrap Core JavaScript -->
+
+    <script src="assets/js/swipslide.min.js"></script>
+
+    <!-- All Included JavaScript -->
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="assets/js/scrolling-nav.js"></script>
+    <script src="assets/js/animated-text.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.countup.min.js"></script>
+    <script src="assets/js/jarallax.min.js"></script>
+    <script src="assets/js/dyscrollup.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="assets/js/jquery.ripples.js"></script>
+    <script src="assets/js/jquery.zoomslider.min.js"></script>
+    <script src="assets/js/countdown.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/lightbox.min.js"></script>
+    <script src="assets/js/jquery.lazyload.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+
+
+    <script src="https://cdn.imperium.plus/assets/js/fullcalendar/v4.4.2/fullcalendar.min.js"></script>
+    <script src="https://cdn.imperium.plus/assets/js/fullcalendar/v4.4.2/daygrid.min.js"></script>
+    <script src="https://cdn.imperium.plus/assets/js/fullcalendar/v4.4.2/popper.min.js"></script>
+    <script src="https://cdn.imperium.plus/assets/js/fullcalendar/v4.4.2/tooltip.min.js"></script>
+
+    <!-- Google map -->
+    <script src="assets/js/google-map.js"></script>
+    <script src="assets/js/jquery-confirm.min.js"></script>
+    <!-- Custom Js -->
+    <script src="assets/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- AJAX Contact Form Using -->
+    <script src="assets/js/app.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+
+            // puisse slider avec le doigt
+            var startX, startY, endX, endY;
+
+            $('#homeCarousel').on('touchstart', function(e) {
+                var touch = e.originalEvent.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+            });
+
+            $('#homeCarousel').on('touchmove', function(e) {
+                e.preventDefault();
+
+                var touch = e.originalEvent.touches[0];
+                endX = touch.clientX;
+                endY = touch.clientY;
+            });
+
+            $('#homeCarousel').on('touchend', function() {
+                var deltaX = endX - startX;
+                var deltaY = endY - startY;
+
+                if (Math.abs(deltaX) > 15) {
+                    if (deltaX > 0) {
+                        $('#homeCarousel').carousel('prev');
+                    } else {
+                        $('#homeCarousel').carousel('next');
+                    }
+                }
+            });
+
+
+        });
+        /*
+        document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: [ 'dayGrid' ],
+                header: {
+            left: "prev",
+            center: "title",
+            right: "next"
+            },
+            defaultView: 'dayGridMonth',
+            firstDay: 1,
+            contentHeight: 480,
+            locale: 'fr',
+            events: '/calendrierEvent',
+            eventRender: function(info) {
+            var tooltip = new Tooltip(info.el, {
+                title: info.event.extendedProps.description,
+                placement: 'top',
+                trigger: 'hover',
+                container: 'body'
+            });
+            },
+    
+    
+        });
+    
+        calendar.render();
+        });
+        */
+    </script>
+
+    <script type="text/javascript">
+        _linkedin_partner_id = "1622442";
+        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+        window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    </script>
+    <script type="text/javascript">
+        (function() {
+            var s = document.getElementsByTagName("script")[0];
+            var b = document.createElement("script");
+            b.type = "text/javascript";
+            b.async = true;
+            b.src = "snap.licdn.com/li.lms-analytics/insight.min.js";
+            s.parentNode.insertBefore(b, s);
+        })();
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none;" alt=""
+            src="https://px.ads.linkedin.com/collect/?pid=1622442&amp;fmt=gif" />
+    </noscript>
+
+</body>
+
+
+</html>

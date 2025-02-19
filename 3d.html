@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>PASS 212</title>
+  <link rel="icon" href="../assets/img/logoclean.png" type="image/x-icon" />
+  <link href="../assets/css/tailwind.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      font-family: Georgia, 'Times New Roman', Times, serif
+    }
+
+    #bgg {
+      background: #161815;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    #chatbox {
+      max-height: calc(100% - 5rem);
+      scrollbar-width: thin;
+      scrollbar-color: rgba(52, 141, 0, 0.5) transparent;
+    }
+
+    #chatbox::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #chatbox::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #chatbox::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 128, 11, 0.5);
+      border-radius: 3px;
+    }
+
+    #location {
+      color: #000;
+    }
+
+    #location:hover {
+      color: #008807;
+      font-size: 101%;
+      text-decoration: underline;
+    }
+
+    #back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 50px;
+      transform: rotate(180deg);
+      text-decoration: solid;
+      background-color: rgb(0, 50, 126);
+      color: white;
+      border: none;
+      border-radius: 60%;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 1;
+      transition: transform 0.3s, padding 0.3s;
+    }
+
+    #back-button:hover {
+      transform: rotate(180deg) scale(1.3);
+    }
+  </style>
+
+  <script data-domain="" defer="" src="../assets/js/script.outbound-links.js"></script>
+</head>
+
+<body id="bgg" class="bg-grey-100 h-screen flex flex-col overflow-hidden" style="background-image: url('assets/img/zlij.jpg'); background-size: cover; background-attachment: fixed;"></body>
+
+  <button id="back-button" style="background: rgb(196, 152, 72);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M19 12l-7 7-1.41-1.41L16.17 13H4v-2h12.17l-4.58-4.59L12 5l7 7z" />
+    </svg>
+  </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script>
+    document.getElementById("back-button").addEventListener("click", () => {
+      window.location.href='index.html';
+    });
+    
+    // Scene setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Controls
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // Enable damping (inertia)
+    controls.dampingFactor = 0.25; // Damping factor
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Soft white light
+    scene.add(ambientLight);
+
+    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6); // Sky color, ground color, intensity
+    hemisphereLight.position.set(0, 200, 0);
+    scene.add(hemisphereLight);
+
+    const light1 = new THREE.DirectionalLight(0xffffff, 1);
+    light1.position.set(5, 5, 5).normalize();
+    scene.add(light1);
+
+    const light2 = new THREE.DirectionalLight(0xffffff, 0.5);
+    light2.position.set(-5, -5, -5).normalize();
+    scene.add(light2);
+
+    // Additional PointLight
+    const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+    pointLight.position.set(0, 2, 2);
+    scene.add(pointLight);
+
+    // Additional white lights
+    const additionalLight1 = new THREE.PointLight(0xffffff, 1, 100);
+    additionalLight1.position.set(2, 2, 2);
+    scene.add(additionalLight1);
+
+    const additionalLight2 = new THREE.PointLight(0xffffff, 1, 100);
+    additionalLight2.position.set(-2, 2, 2);
+    scene.add(additionalLight2);
+
+    // Load GLB model
+    const loader = new THREE.GLTFLoader();
+    let model;
+    loader.load('assets/guide.glb', function (gltf) {
+      model = gltf.scene;
+      scene.add(model);
+    }, undefined, function (error) {
+      console.error(error);
+    });
+
+    // Define background image
+    const textureLoader = new THREE.TextureLoader();
+    const backgroundTexture = textureLoader.load('assets/img/zlij.jpg', function (texture) {
+      scene.background = texture;
+    });
+
+    // Camera position
+    camera.position.z = 2;
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      // if (model) {
+      //   model.rotation.y += 0.01; // Rotate the model
+      // }
+      controls.update(); // Update controls
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Handle window resize
+    window.addEventListener('resize', function () {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+
+</html>

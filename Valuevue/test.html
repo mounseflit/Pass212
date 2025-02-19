@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generative AI App</title>
+</head>
+<body>
+  <input type="file" id="fileInput" accept="image/*">
+  <label for="promptInput">price given:</label>
+  <input type="text" id="promptInput">
+  <label for="currency">currency:</label>
+  <input type="text" id="currency">
+  <button id="submitButton">Submit</button>
+  <div id="resultContainer"></div>
+
+</body>
+
+<script type="importmap">
+  {
+    "imports": {
+      "@google/generative-ai": "https://esm.run/@google/generative-ai"
+    }
+  }
+</script>
+
+<script type="module">
+  // script.js
+  function rot13Encrypt(inputString) {
+        var result = '';
+        for (var i = 0; i < inputString.length; i++) {
+            var charCode = inputString.charCodeAt(i);
+            if (65 <= charCode && charCode <= 90) {
+                result += String.fromCharCode(((charCode - 65 + 13) % 26) + 65);
+            } else if (97 <= charCode && charCode <= 122) {
+                result += String.fromCharCode(((charCode - 97 + 13) % 26) + 97);
+            } else {
+                result += inputString.charAt(i);
+            }
+        }
+        return result;
+    }
+
+    const API_KEY = rot13Encrypt("NVmnFlOh7czylr1cViWRwEPbPjS1P1r8-6xWWKf"); // Replace with your actual API key
+
+  // Import GoogleGenerativeAI library
+  import { GoogleGenerativeAI } from "@google/generative-ai";
+  
+  // Access your API key (see "Set up your API key" above)
+  const genAI = new GoogleGenerativeAI(API_KEY);
+  
+  // Converts a File object to a GoogleGenerativeAI.Part object.
+  async function fileToGenerativePart(file) {
+    const base64EncodedDataPromise = new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result.split(',')[1]);
+      reader.readAsDataURL(file);
+    });
+    return {
+      inlineData: { data: await base64EncodedDataPromise, mimeType: file.type },
+    };
+  }
+  
+  // Function to run the AI model
+  async function run() {
+    // For text-and-images input (multimodal) models, you need to provide a prompt
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    const price = document.getElementById("promptInput").value;
+    const currency = document.getElementById("currency").value;
+    
+  
+    const prompt = `You are an AI service named 'ValueVue' designed to assist patients and consumers in making informed purchasing decisions and to prevent tourists from falling victim to scams. Your task is to analyze images of products, provide a reasoned estimate of their market value in ${currency}, and offer a brief description. Additionally, you'll compare the price provided by the seller/shop that is : ${price} , compare it with the price that you estimated in ${currency}. You will determine if the buyer is potentially being scammed if the price is significantly higher than the market value or if it's a fair deal by comparing if it is higher then estimated it is a scam, try to be the max as possible accurate and realistic, and generate an bargaining and negotiating strategie with 3 steps. Provide the output in a JSON format structured as follows without any additional text :{ "product_name": "xxxxxxxxx", "currency": "xxxx", "shop_price": "XXXX", "estimated_price": "XXXX", "reasonable_price_range": { "min": xxx, "max": xxx }, "is_over_priced": true/false, "is_great_deal": true/false, "reason": "XXXXXXXXXXXXXXXXXXXXXXXX", "strategie": { "step 1": "xxxxxxxx", "step 2": "xxxxxxxx", "step 3": "xxxxxxxx" }}`;
+  
+    const fileInputEl = document.querySelector("#fileInput");
+    const imageParts = await Promise.all(
+      [...fileInputEl.files].map(fileToGenerativePart)
+    );
+  
+    const result = await model.generateContent([prompt, ...imageParts]);
+    const response = await result.response;
+  
+    const text = response.text();
+  
+    // Display the generated text
+    const resultContainer = document.querySelector("#resultContainer");
+    resultContainer.textContent = text;
+  }
+  
+  // Event listener for the submit button
+  document.querySelector("#submitButton").addEventListener("click", run);
+  
+  </script>
+
+
+</html>
+
+

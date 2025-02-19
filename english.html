@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pass 212</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f9f9f9;
+            text-align: left;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #ff716f1c;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-btn {
+            background: white;
+            color: #ff726f;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .language-selector {
+            padding: 10px;
+            border-radius: 20px;
+            background: white;
+            color: #222;
+            border: none;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .category-section {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+        }
+
+        .category {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+
+        .pass-section {
+            background: linear-gradient(to right, #34c759, #f77b7b);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 20px;
+            margin: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pass-section img {
+            width: 50px;
+        }
+
+        .suggested-section,
+        .offers-section {
+            margin: 20px;
+        }
+
+        .offers-container {
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .offer-card {
+            background: white;
+            padding: 15px;
+            margin-right: 15px;
+            border-radius: 15px;
+            min-width: 200px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .bottom-menu {
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            border-top: 2px solid #ddd;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item {
+            color: #195817;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .menu-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .menu-item:hover {
+            color: #7a2a2a;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- <button class="login-btn">Login</button>  -->
+        <img src="assets/img/logo.png" alt="Pass 212 Logo" style="height: 60px;">
+
+        <select class="language-selector" style="font-size: 12px;">
+            <option>English</option>
+            <option>Français</option>
+            <option>Español</option>
+            <option>العربية</option>
+        </select>
+
+
+        <script>
+            document.querySelector('.language-selector').addEventListener('change', function() {
+                var selectedLanguage = this.value;
+                var languagePage = selectedLanguage.toLowerCase() + '.html';
+                window.location.href = languagePage;
+            });
+        </script>
+        </div>
+    </header>
+
+
+    <main class="container">
+        <div class="category-section">
+            <div class="category" style="font-size: 10px;"><i class="fas fa-palette"></i> Culture</div>
+            <div class="category" style="font-size: 10px;"><i class="fas fa-futbol"></i> Sports</div>
+            <div class="category" style="font-size: 10px;"><i class="fas fa-bus"></i> Transport</div>
+            <div class="category" style="font-size: 10px;"><i class="fas fa-hotel"></i> Hosting</div>
+        </div>
+
+
+
+        <style>
+            .category:hover {
+                transform: scale(1.05);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .category:active {
+                transform: scale(1.1);
+                transition: transform 0.1s ease-in-out;
+            }
+        </style>
+
+
+        <p style="color: rgb(0, 0, 0); font-size: 12px; margin-top: 20px; font-weight: bold; text-align: center;">
+            Welcome &nbsp; Bienvenue &nbsp; ようこそ &nbsp; Benvenuto &nbsp; 환영합니다 &nbsp; Bienvenido &nbsp; 欢迎 &nbsp; Добро
+            пожаловать &nbsp; Willkommen &nbsp; أهلا بك &nbsp; Bem-vindo &nbsp; स्वागत हे &nbsp; Välkommen &nbsp;
+            ยินดีต้อนรับ
+        </p>
+
+
+        <div class="pass-section" style="height: 70px;"  onclick="window.location.href='pass.html'">
+            <style>
+                .pass-section:hover {
+                    transform: scale(1.05);
+                    transition: transform 0.3s ease-in-out;
+                }
+
+                .pass-section:active {
+                    transform: scale(1.1);
+                    transition: transform 0.1s ease-in-out;
+                }
+            </style>
+            <span class="badge bg-success" style="font-size: 16px;">PASS Basic</span>
+            <button class="login-btn" style="font-size: 12px; color: rgb(0, 0, 0);"> Upgrade <i class="fas fa-crown"
+                    style="font-size: 12px; color: gold;"></i> </button>
+            <button class="login-btn"
+                style="font-size: 12px; color: rgb(255, 255, 255); background-color: #a010102a;"><i
+                    class="fas fa-qrcode" style="font-size: 24px;"></i></button>
+
+        </div>
+
+        <div class="suggested-section">
+            <h3>Our Features</h3>
+
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" onclick="window.location.href='tripplanner/index.html'">
+                        <div class="card"
+                            style="border-radius: 15px; margin: 20px; background-color: #ffffff !important; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
+                            <div class="card-body" style="color: #000000; padding: 20px 70px;">
+                                <h3 class="card-title" style="font-weight: bold; font-size: 20px;"><i class="fas fa-map-marked-alt"></i> &nbsp;TripPlanner</h3>
+                                <p class="card-text" style="font-size: 8px;">Plan Your Day Trip in minutes (Monuments, Events, Visits...)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item"  onclick="window.location.href='snap.html'">
+                        <div class="card"
+                            style="border-radius: 15px; margin: 20px; background-color: #ffffff !important; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
+                            <div class="card-body" style="color: #000000; padding: 20px 70px;">
+                                <h3 class="card-title" style="font-weight: bold; font-size: 19px;"><i class="fas fa-landmark"></i>&nbsp; Monumates</h3>
+                                <p class="card-text" style="font-size: 8px;">Immerse yourself in the culture and history with chatbots</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item"  onclick="window.location.href='Valuevue/index.html'">
+                        <div class="card"
+                            style="border-radius: 15px; margin: 20px; background-color: #ffffff !important; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
+                            <div class="card-body" style="color: #000000; padding: 20px 70px;">
+                                <h3 class="card-title" style="font-weight: bold; font-size: 20px;"> <i class="fas fa-camera"></i> &nbsp;ValueVue</h3>
+                                <p class="card-text" style="font-size: 8px;">Enjoy the Local Markets without fear of getting scammed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <style>
+                        .card:hover {
+                            transform: translateY(-10px);
+                            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                        }
+                    </style>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+            <style>
+                .carousel-caption {
+                    background: rgba(0, 0, 0, 0.5);
+                    padding: 20px;
+                    border-radius: 10px;
+                }
+
+                .carousel-control-prev-icon {
+                    background-color: #6fff87;
+                    border-radius: 50%;
+                    padding: 5px;
+                }
+
+                .carousel-control-next-icon {
+                    background-color: #6fff87;
+                    border-radius: 50%;
+                    padding: 5px;
+                }
+
+                .carousel-indicators button {
+                    background-color: #ff726f;
+                }
+            </style>
+        </div>
+
+
+        <div class="offers-section">
+            <h3 style="display: inline-block;">Ratings</h3>
+            <a href="#"
+                style="font-size: 12px; color: #ff726f; text-decoration: none; font-weight: bold; float: right;">Show
+                All</a>
+            <div class="offers-container" style="overflow: hidden;">
+                <div class="offer-card">
+                    Alsa Transportation Services
+                    <div class="rating">
+                        <span style="color: gold;">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                        <span style="font-size: 12px;">(3.2)</span>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    Koutobia, the Mosque Facilities
+                    <div class="rating">
+                        <span style="color: gold;">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                        <span style="font-size: 12px;">(4.3)</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <br>
+            <br>
+
+
+            <div class="offers-sectio">
+                <h3 style="display: inline-block;">This Week's Offers</h3>
+                <a href="#"
+                    style="font-size: 12px; color: #ff726f; text-decoration: none; font-weight: bold; float: right;">Show
+                    All</a>
+                <div class="offers-container" style="overflow: hidden;">
+                    <div class="offer-card">
+                        Free Ice Cream For Each Meal Bought
+                        <span class="badge bg-success" style="font-size: 12px; margin-left: 10px;">Free</span>
+                    </div>
+                    <div class="offer-card">
+                        Free Tour At Koutobia Mosque By Night
+                        <span class="badge bg-success" style="font-size: 12px; margin-left: 10px;">Free</span>
+                    </div>
+                </div>
+            </div>
+
+            <br><br><br>
+    </main>
+    <nav class="bottom-menu">
+        <a href="#" class="menu-item active"><i class="fas fa-home"></i> Home</a>
+        <a href="pass.html" class="menu-item"><i class="fas fa-ticket-alt"></i> My Pass</a>
+        <a href="map.html" class="menu-item"><i class="fas fa-map"></i> Map</a>
+        <a href="#" class="menu-item"><i class="fas fa-cogs"></i> Settings</a>
+    </nav>
+
+    <style>
+
+        .active{
+            color: #ff726f;
+        }
+
+
+        .menu-item:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .menu-item:active {
+            transform: scale(1.2);
+            transition: transform 0.1s ease-in-out;
+        }
+    </style>
+
+    <!-- Plug-In Code Start -->
+    <link rel="stylesheet" href="https://bot-in.surge.sh/cdn/bot-in.css">
+    <div class="chatbot-bubble2024" id="chatbot-bubble2024"><img src="https://img.icons8.com/ios-filled/50/000000/chat.png" id="chat-icon2024" alt="Chatbot"></div><div id="chat-container2024" class="chat-container2024"><div id="chatbox2024" class="chatbox2024"></div><div class="message-bar2024"> <input class="message-input2024" id="messageInput2024" type="text" placeholder="Type your question here..." /><button class="send-button2024" type="button" id="sendButton2024">Ask</button></div></div>
+    <script src="https://bot-in.surge.sh/cdn/bot-in.js"></script>
+    <!-- Plug-In Code End -->
+</body>
+
+</html>

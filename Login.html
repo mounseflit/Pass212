@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <script src="/assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="mi mi">
+    <meta name="author" content="Mounseflit">
+    <link rel="shortcut icon" type="x-icon" href="assets/img/logo.png">
+    
+    <title>Pass 212 Login</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        header {
+            display: block
+        }
+
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            width: 100%;
+            height: 70px;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            z-index: 10
+        }
+
+        .header--logo {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin-right: 50px;
+            text-decoration: none;
+            color: #fff
+        }
+
+        .header--logo p {
+            margin: 0 0 0 10px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .header--nav-toggle {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            width: 50px;
+            height: 50px;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            cursor: pointer
+        }
+
+        .header--nav-toggle span,
+        .header--nav-toggle::before,
+        .header--nav-toggle::after {
+            content: "";
+            position: relative;
+            width: 16px;
+            height: 2px;
+            background-color: #fff
+        }
+
+        .header--nav-toggle::before {
+            bottom: 5px;
+            width: 23px
+        }
+
+        .header--nav-toggle::after {
+            top: 5px;
+            width: 23px
+        }
+
+        .header--cta {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            padding: 0 20px;
+            line-height: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 10px;
+            border-color: rgba(255, 0, 0, 0.993);
+            color: rgba(255, 0, 0, 0.856);
+            background-color: #000000;
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition: opacity .4s ease-in-out, visibility 0s .4s;
+            transition: opacity .4s ease-in-out, visibility 0s .4s
+        }
+
+        .header--cta:focus {
+            outline: none
+        }
+
+        .header--cta:hover {
+            color: #fff;
+            background-color: rgba(255, 0, 0, 0.993);
+            border-radius: 10px;
+            border-color: #00000000;
+        }
+
+        .header--cta.is-active {
+            opacity: 1;
+            visibility: visible;
+            border-radius: 10px;
+            border-color: rgba(255, 0, 0, 0.993);
+            color: rgba(255, 0, 0, 0.993);
+            background-color: #000000;
+            -webkit-transition: opacity .4s ease-in-out .4s;
+            transition: opacity .4s ease-in-out .4s
+        }
+
+        .header--cta.is-active:hover {
+            border-radius: 10px;
+            border-color: #00000000;
+            color: #fff;
+            background-color: rgba(255, 0, 0, 0.993);
+            -webkit-transition: opacity .4s ease-in-out .4s;
+            transition: opacity .4s ease-in-out .4s
+        }
+
+        #back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            transform: rotate(180deg);
+            text-decoration: solid;
+            background-color: rgba(255, 0, 0, 0.993);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+            transition: transform 0.3s, padding 0.3s;
+            /* Added transition effect */
+        }
+
+        #back-button:hover {
+            transform: rotate(180deg) scale(1.2);
+            /* Apply rotation and scale on hover */
+            padding: 12px;
+            /* Increase padding on hover */
+        }
+
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: rgb(255, 255, 255);
+            /* background: linear-gradient(to right, #004119, #1f1212); */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+            position: relative;
+            overflow: hidden;
+            width: 768px;
+            max-width: 100%;
+            min-height: 480px;
+        }
+
+        .container p {
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0.3px;
+            margin: 20px 0;
+        }
+
+        .container span {
+            font-size: 12px;
+        }
+
+        .container a {
+            color: #333;
+            font-size: 13px;
+            text-decoration: none;
+            margin: 15px 0 10px;
+        }
+
+        .container button {
+            background-color: #3ba82d;
+            color: #fff;
+            font-size: 12px;
+            padding: 10px 45px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .container button.hidden {
+            background-color: transparent;
+            border-color: #fff;
+        }
+
+        .container form {
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            height: 100%;
+        }
+
+        .container input {
+            background-color: #eee;
+            border: none;
+            margin: 8px 0;
+            padding: 10px 15px;
+            font-size: 13px;
+            border-radius: 8px;
+            width: 100%;
+            outline: none;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .sign-in {
+            left: 0;
+            width: 50%;
+            z-index: 2;
+        }
+
+        .container.active .sign-in {
+            transform: translateX(100%);
+        }
+
+        .sign-up {
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .container.active .sign-up {
+            transform: translateX(100%);
+            opacity: 1;
+            z-index: 5;
+            animation: move 0.6s;
+        }
+
+        @keyframes move {
+
+            0%,
+            49.99% {
+                opacity: 0;
+                z-index: 1;
+            }
+
+            50%,
+            100% {
+                opacity: 1;
+                z-index: 5;
+            }
+        }
+
+        .social-icons {
+            margin: 20px 0;
+        }
+
+        .social-icons a {
+            border: 1px solid #ccc;
+            border-radius: 20%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 3px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .toggle-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: all 0.6s ease-in-out;
+            border-radius: 150px 0 0 100px;
+            z-index: 1000;
+        }
+
+        .container.active .toggle-container {
+            transform: translateX(-100%);
+            border-radius: 0 150px 100px 0;
+        }
+
+        .toggle {
+            background-color: #ec0020;
+            height: 100%;
+            background: linear-gradient(to right, #1a7000, #e90000);
+            color: #fff;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            transform: translateX(0);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .container.active .toggle {
+            transform: translateX(50%);
+        }
+
+        .toggle-panel {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 30px;
+            text-align: center;
+            top: 0;
+            transform: translateX(0);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .toggle-left {
+            transform: translateX(-200%);
+        }
+
+        .container.active .toggle-left {
+            transform: translateX(0);
+        }
+
+        .toggle-right {
+            right: 0;
+            transform: translateX(0);
+        }
+
+        .container.active .toggle-right {
+            transform: translateX(200%);
+        }
+
+       
+        .checkbox-container {
+                      display: inline-flex;
+                      align-items: center;
+                    }
+                  
+        #terms {
+                      margin-right: 10px; /* Optional: Add some spacing between the checkbox and label */
+                    }
+
+        #texterms {
+                     
+                    white-space: nowrap;
+                    }
+
+        #termss {
+                      margin-right: 10px; /* Optional: Add some spacing between the checkbox and label */
+                    }
+
+        #textermss {
+                     
+                    white-space: nowrap;
+                    }
+           
+
+        button {
+            background-color: #31a82d;
+            color: #fff;
+            font-size: 12px;
+            padding: 10px 45px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0f4608;
+            font-size: 15px;
+            transition: ease-in-out 0.3s;
+        }
+
+
+        .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      z-index: 10000;
+    }
+    </style>
+
+
+
+</head>
+
+<body class="text-center">
+
+    <!-- <header class="header">
+        <button id="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path d="M19 12l-7 7-1.41-1.41L16.17 13H4v-2h12.17l-4.58-4.59L12 5l7 7z" />
+            </svg>
+        </button>
+        <br>
+        <a class="header--logo" href="index.html">
+            <img src="assets/img/logo.png" style="height: 50px;">
+            
+        </a>
+
+    </header> -->
+  
+     
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check2" viewBox="0 0 16 16">
+            <path
+                d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+        </symbol>
+        <symbol id="circle-half" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+        </symbol>
+        <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+            <path
+                d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+            <path
+                d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+        </symbol>
+        <symbol id="sun-fill" viewBox="0 0 16 16">
+            <path
+                d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+        </symbol>
+    </svg>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form>
+                <!-- <img src="assets/img/logo.png" style="height: 50px;"> -->
+                <h1>Create Account</h1>
+
+                <span>or register if you already have an account</span>
+                <input type="text" placeholder="Username">
+                <input type="email" placeholder="Email">
+                <input type="tel" placeholder="Phone number">
+                <input type="password" placeholder="Password">
+                <input type="password" placeholder="Confirm Password">
+
+                
+                  
+                <div class="checkbox-container">
+                    <input type="checkbox" id="terms" name="terms"><label for="terms" id="texterms">I Accept all the <a href="terms.html" style="text-decoration: underline; font-size: medium; font-weight: 600;">terms</a></label>
+                    
+                    
+                  </div>
+                  
+                <button id="suu">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form>
+                <img src="assets/img/logo.png" style="height: 50px;">
+                <h1>Sign In</h1>
+                <br><br>
+                <input type="tel" placeholder="Phone number">
+                <input type="password" placeholder="Password">
+                <a href="#" id="forgotPassword" style="color: #a82d2d; text-decoration: underline;">Forget Your Password?</a>
+            
+             
+                  
+                <div class="checkbox-container">
+                    <input type="checkbox" id="termss" name="termss"><label for="termss" id="textermss">Accept all the <a href="terms.html" style="text-decoration: underline; font-size: medium; font-weight: 600;">terms</a></label>
+                    
+                    
+                  </div>
+                  
+                  
+
+                <button id="sii">Sign In</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back to My Way!</h1>
+                    <p>Enter your personal details to use all of site features</p>
+                    <button id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Don't Have an account </h1>
+                    <p>Register with your personal details</p>
+
+                    <button id="register">Sign Up</button>
+                </div>
+            </div>
+        </div>
+        <div id="forgetPasswordModal" class="modal-overlay" >
+            <div class="modal-content" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+              <p style=" text-align: center; align-items: center; align-content: center;">If you forgot the password. Contact the admin here : <br> <br><a href="mailto:myway.core.team@gmail.com" style="color: #0f440a; text-align: left !important;">myway.core.team@gmail.com</a><br>Or<br><a href="tel:+212614335196" style="color: #512da8; text-align: left !important;">+212614335196</a></p>
+              <button onclick="closeModal()" style=" align-self: center; ">Close</button>
+            </div>
+          </div>
+    </div>
+</body>
+
+
+
+<script>
+ // Function to open the modal
+ function openModal() {
+      document.getElementById('forgetPasswordModal').style.display = 'flex';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+      document.getElementById('forgetPasswordModal').style.display = 'none';
+    }
+
+    // Event listener for the "Forget Password" link
+    document.getElementById('forgotPassword').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default behavior of the link
+      openModal(); // Call the function to open the modal
+    });
+
+    const container = document.getElementById('container');
+    const registerBtn = document.getElementById('register');
+    const loginBtn = document.getElementById('login');
+
+    registerBtn.addEventListener('click', () => {
+        container.classList.add("active");
+    });
+
+    loginBtn.addEventListener('click', () => {
+        container.classList.remove("active");
+    });
+
+    document.getElementById("back-button").addEventListener("click", () => {
+        history.back();
+    });
+
+    document.getElementById("sii").addEventListener("click", function () {
+        window.location.href = "index.html";
+    });
+
+    document.getElementById("suu").addEventListener("click", function () {
+        window.location.href = "index.html";
+    });
+
+</script>
+
+
+
+</html>
